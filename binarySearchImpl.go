@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/bhanushrestha/binary-search-algorithm-go-implementation/sort"
+)
 
 //Implementation of Binary Search Algorith using loop
 func loopBinarySearch(sortedArray []int, startingPoint, endingPoint, target int) int {
@@ -40,11 +44,16 @@ func recursiveBinarySearch(sortedArray []int, startingPoint, endingPoint, target
 }
 
 func main() {
+
 	//binary search requires sorted Array
-	array := []int{1, 2, 4, 6, 7, 12, 23, 34}
+	//array := []int{1, 32, 34, 45, 56, 65}
+	array := []int{65, 56, 45, 34, 32, 1}
+	sortingAlgorithm := sort.NewBubbleSort()
+	sortingAlgorithm.SortArray(array)
+	fmt.Println("Sorted Array : ", array)
 
 	var itemToSearch int
-	itemToSearch = 4
+	itemToSearch = 32
 	//answer := loopBinarySearch(array, 0, len(array)-1, itemToSearch)
 	answer := recursiveBinarySearch(array, 0, len(array)-1, itemToSearch)
 	if answer == -1 {
@@ -52,5 +61,4 @@ func main() {
 	} else {
 		fmt.Println("Value found :", array[answer], "in index ", answer, " of given array")
 	}
-
 }
